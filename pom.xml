@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-build</artifactId>
+        <version>1.2.0.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>org.mvnsearch.cloud</groupId>
+    <artifactId>spring-cloud-aliyun</artifactId>
+    <version>1.0.0.BUILD-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Spring Cloud Aliyun</name>
+    <description>Spring Cloud Aliyun</description>
+
+    <developers>
+        <developer>
+            <id>linux_china</id>
+            <name>Jacky Chan</name>
+            <email>libing.chen@gmail.com</email>
+            <url>https://twitter.com/linux_china</url>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/linux-china/spring-cloud-aliyun</url>
+        <connection>scm:git:git://github.com/linux-china/spring-cloud-aliyun.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/linux-china/spring-cloud-aliyun.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <java.vesion>1.8</java.vesion>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <platform-bom.version>Athens-SR1</platform-bom.version>
+    </properties>
+
+    <modules>
+        <module>spring-cloud-aliyun-dependencies</module>
+        <module>spring-cloud-aliyun-core</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${platform-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <compilerArgs>
+                            <!-- Enable all warnings -->
+                            <compilerArg>-Xlint:all</compilerArg>
+                            <!-- Disable options warning because we will have differences between the compiler and source code level-->
+                            <compilerArg>-Xlint:-options</compilerArg>
+                            <!-- Disable serialversionuid warnings -->
+                            <compilerArg>-Xlint:-serial</compilerArg>
+                            <!--compilerArg>-Werror</compilerArg-->
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <links>
+                        <link>http://docs.oracle.com/javase/8/docs/api/</link>
+                        <link>http://docs.oracle.com/javaee/8/api/</link>
+                        <link>http://fasterxml.github.com/jackson-core/javadoc/2.0.0/</link>
+                        <link>http://docs.spring.io/spring/docs/4.3.x/javadoc-api/</link>
+                    </links>
+                    <author>true</author>
+                    <header>${project.name}</header>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+
+</project>
